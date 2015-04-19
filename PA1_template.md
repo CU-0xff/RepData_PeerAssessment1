@@ -34,7 +34,7 @@ day_median <- median(day_total$steps)
 hist(day_total$steps, xlab="Sum of Steps", main="Histogram of Total Sum of Steps over Day")
 ```
 
-![](PA1_files/figure-html/unnamed-chunk-2-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-2-1.png) 
 
 The code above calculates the sum of steps per day and stores it in **day_total**. This is used to calculate the mean, median, and a histogram over the days.
 
@@ -59,7 +59,7 @@ interval_max_avg <- interval_avg[which.max(interval_avg$steps),c("interval")]
 plot(interval_avg$interval, interval_avg$steps, type="l", xlab="5-minute Interval over day", ylab="Average steps taken", main="Average number of steps taken in interval")
 ```
 
-![](PA1_files/figure-html/unnamed-chunk-3-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-3-1.png) 
 
 The code above calculates the mean over the **activity_noNA** data frame aggregating over the interval. Using the results, the maximum and the interval of its occurrence is calculated. Finally, a plot is done.
 
@@ -67,7 +67,7 @@ The code above calculates the mean over the **activity_noNA** data frame aggrega
 
 The graph shows nicely typical sleeping times (up to interval 500 representing 500 times 5 minutes of the day). In the morning than activity increases up to its local maximum of 206.1698113 at 835. Around interval 2000 the daily activity throttles down and leaves into the night.
 
-Again we took the data frame neglecting imcomplete measurements which might lead to a bias.
+Again we took the data frame neglecting incomplete measurements which might lead to a bias.
 
 
 ## Imputing missing values
@@ -95,7 +95,7 @@ day_imp_median <- median(day_imp_total$steps)
 hist(day_imp_total$steps, xlab="Sum of Steps (Imputted)", main="Histogram of Total Sum of Steps over Day")
 ```
 
-![](PA1_files/figure-html/unnamed-chunk-4-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-4-1.png) 
 
 The code above uses the mean number of steps per interval to fill in missing measurements with the mean number of steps of the respective interval. A data frame **activity_imp** is generated that reflects the raw data merged with the extrapolated data points. This data frame is then used to aggregate the sum over the day, calculate mean and median again as well as plot a histogram.
 
@@ -141,7 +141,7 @@ library(ggplot2)
 ggplot(interval_imp_avg, aes(x=interval,y=steps)) + facet_grid(type_day~.) + ggtitle("Average number of steps taken per interval per type of day") + geom_line()
 ```
 
-![](PA1_files/figure-html/unnamed-chunk-5-1.png) 
+![](PA1_template_files/figure-html/unnamed-chunk-5-1.png) 
 
 The code defines Saturday and Sunday as the weekend, all other days are seen as weekdays. According to the date in the measurement, the day of the week is calculated by using the ***weekdays*** function and assigned as a factor to the ***type_day*** column. Then two data frames are generated; one containing all measurments done during a weekend day and one containing the others. Using these data frames, the respective maximum number of steps is calculated and the steps are aggregated over the respective interval. The latter is plotted to compare weekends and weekdays.
 
